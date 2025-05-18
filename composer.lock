@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "71ee565b9c8822bb7bcc2b26f5a37618",
+    "content-hash": "25f0aac890105e2a7a47e5bc5e27d4f8",
     "packages": [
         {
             "name": "brick/math",
@@ -6099,6 +6099,51 @@
                 "source": "https://github.com/hamcrest/hamcrest-php/tree/v2.1.1"
             },
             "time": "2025-04-30T06:54:44+00:00"
+        },
+        {
+            "name": "hpsweb/laravel-email-templates",
+            "version": "v1.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/OoHerbethoO/laravel-email-templates.git",
+                "reference": "c1d43e7174d54becac5611638125b55a6045a764"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/OoHerbethoO/laravel-email-templates/zipball/c1d43e7174d54becac5611638125b55a6045a764",
+                "reference": "c1d43e7174d54becac5611638125b55a6045a764",
+                "shasum": ""
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Pleb\\EmailTemplatesServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Pleb\\": "./"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-3.0"
+            ],
+            "description": "Laravel Email Templates (Blade)",
+            "homepage": "https://github.com/OoHerbethoO/laravel-email-templates",
+            "keywords": [
+                "email",
+                "laravel",
+                "php",
+                "templates"
+            ],
+            "support": {
+                "issues": "https://github.com/OoHerbethoO/laravel-email-templates/issues",
+                "source": "https://github.com/OoHerbethoO/laravel-email-templates/tree/v1.1.0"
+            },
+            "time": "2024-05-08T21:58:44+00:00"
         },
         {
             "name": "laravel/pail",

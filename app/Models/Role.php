@@ -2,10 +2,10 @@
 
 namespace App\Models;
 
+use App\Core\BaseModel;
 use App\Core\DocStatus;
-use Illuminate\Database\Eloquent\Model;
 
-class Role extends Model
+class Role extends BaseModel
 {
     protected $fillable = ['name', DocStatus::COLUMN_NAME];
 

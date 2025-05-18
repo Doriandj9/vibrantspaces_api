@@ -14,9 +14,8 @@ return new class extends Migration
     {
         Schema::create('data_services', function (Blueprint $table) {
             $table->id();
-            $table->string('phone_client');
-            $table->string('address_client');
             $table->string('type_contact');
+            $table->string('description_area');
             $table->integer('bathrooms')->nullable();
             $table->integer('rooms')->nullable();
             $table->integer('kitchens')->nullable();

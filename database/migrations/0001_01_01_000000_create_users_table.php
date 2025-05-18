@@ -15,9 +15,11 @@ return new class extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('contact_number');
             $table->string('email')->unique();
+            $table->string('address')->nullable();
             $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
+            $table->string('password')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
@@ -55,6 +57,7 @@ return new class extends Migration
         $data = [
             'id' => 1,
             'name'=> 'Vibrant Spaces',
+            'contact_number'=> '0980686891',
             'email'=> 'vibrant_spaces@email.com',
             'password' => Hash::make('12345'),
             'email_verified_at' => now()

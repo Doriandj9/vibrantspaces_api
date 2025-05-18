@@ -33,4 +33,19 @@ class AuthServices extends BaseService {
         ];
         return  $response;
     }
+
+    public function updateData($id){
+       
+        $user = $this->update($id);
+        $timeExpired = now()->addMinutes(self::TIME_SESSION);
+        $accessToken = $user->createToken('auth_token', [], $timeExpired)->plainTextToken;
+        $jwt = JWToken::create($user->toArray());
+
+        $response = [
+            'token' => $accessToken,
+            'time_expired_token' => $timeExpired->format('Y-m-d H:i:s'),
+            'jwt' => $jwt,
+        ];
+        return  $response;
+    }
 }

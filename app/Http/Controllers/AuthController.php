@@ -65,4 +65,18 @@ class AuthController extends Controller
             return response_error($th->getMessage());
         }
     }
+
+   public function updateAccount(Request $request, $id)
+    {
+        try {
+            $request->validate([
+                'email' => 'required',
+                'password' => 'required'
+            ]);
+            $data = $this->service->updateData($id);
+            return response_success($data);
+        } catch (\Throwable $th) {
+            return response_error($th->getMessage(),false);
+        }
+    }
 }

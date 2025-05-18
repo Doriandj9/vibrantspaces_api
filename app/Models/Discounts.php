@@ -2,9 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use App\Core\BaseModel;
 
-class Discounts extends Model
+class Discounts extends BaseModel
 {
     //
 }

@@ -21,6 +21,8 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
+        'contact_number',
+        'address',
         'email',
         'password',
     ];
@@ -64,5 +66,10 @@ class User extends Authenticatable
     public function roles(){
         return $this->belongsToMany(Role::class,'users_roles','user_id','role_id')
         ->where(DocStatus::COLUMN_NAME,'=',DocStatus::ACTIVE);
+    }
+
+
+    public function requestsService(){
+        return $this->hasMany(DataServices::class,'user_id','id');
     }
 }

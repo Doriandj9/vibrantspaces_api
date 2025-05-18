@@ -3,10 +3,10 @@
 namespace App\Models;
 
 use App\Casts\PayloadCast;
+use App\Core\BaseModel;
 use App\Core\DocStatus;
-use Illuminate\Database\Eloquent\Model;
 
-class Services extends Model
+class Services extends BaseModel
 {
     protected $fillable = [
         'title',
@@ -23,4 +23,7 @@ class Services extends Model
         'trans'=> PayloadCast::class,
     ];
     
+    public function dataServices(){
+        return $this->hasMany(DataServices::class,'services_id','id');
+    }
 }
