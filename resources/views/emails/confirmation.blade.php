@@ -41,8 +41,8 @@
         <!-- lotus-arrow-divider -->
         <tr>
             <td align="center" bgcolor="#FFFFFF">
-                <img style="width:50px;border:0px;display: inline!important; position: relative; top: -9px;"
-                    src="{{ asset('assets/img/emails/Arrow.svg') }}" width="50" border="0" alt="arrow">
+                <img style="width:100px;border:0px;display: inline!important; position: relative; top: -20px;"
+                    src="{{ asset('assets/img/emails/Arrow.png') }}" width="50" border="0" alt="arrow">
             </td>
         </tr>
     </table>
