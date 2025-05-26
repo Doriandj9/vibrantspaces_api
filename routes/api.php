@@ -11,6 +11,7 @@ Route::get('/user', function (Request $request) {
 
 
 Route::prefix('v1')->group(function () {
+    Route::post('upload',[ServicesController::class,'upload']);
     Route::post('security/attempt',[AuthController::class,'authLogin']);
     Route::post('security/logout',[AuthController::class,'logout'])
     ->middleware('auth:sanctum');
@@ -27,7 +28,9 @@ Route::prefix('v1')->group(function () {
         Route::get('/', [ServicesController::class,'indexData']);
         Route::post('/', [ServicesController::class,'storeData']);
         Route::post('send-confirmation', [ServicesController::class,'sendConfirmation'])->middleware('auth:sanctum');
-        Route::post('send-message', [ServicesController::class,'sendMessage']);
+        Route::post('send-message', [ServicesController::class,'sendMessage']); 
+        Route::put('notification/{id}', [ServicesController::class,'updateNotification']);
+        Route::put('{id}', [ServicesController::class,'updateServiceData']);
         Route::get('messages', [ServicesController::class,'indexMessages'])->middleware('auth:sanctum');
         Route::get('user/{tax_id}', [ServicesController::class,'showUserByTaxId']);
     });

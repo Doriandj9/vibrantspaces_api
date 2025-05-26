@@ -18,7 +18,7 @@ trait FileHandler
      * @return
      */
     public function storeFile(UploadedFile $file, $folder = 'avatar') {
-        $name = Carbon::now()->format('Y_m_d_H_i_s')."_".$file->getClientOriginalName();
+        $name = Carbon::now()->format('Y_m_d_H_i_s')."_". preg_replace('/\+/', '_', $file->getClientOriginalName());
         $exist = false;
 
         if(file_exists("$this->storage_prefix/$folder")){

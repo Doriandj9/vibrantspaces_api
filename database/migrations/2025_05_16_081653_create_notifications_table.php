@@ -27,7 +27,7 @@ return new class extends Migration
             $table->foreign('receiver')->references('id')->on('users')->onDelete('RESTRICT');
             $table->foreign('data_service_id')->references('id')->on('data_services')->onDelete('RESTRICT');
             $table->string('email')->nullable();
-
+            $table->text('attachments')->nullable();
             $table->unsignedBigInteger("created_by")->nullable();
             $table->foreign('created_by')->references('id')->on('users')->onDelete('RESTRICT');
             $table->unsignedBigInteger("updated_by")->nullable();

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Core\DocStatus;
+use App\Filters\DataServiceFilter;
+use App\Filters\NotificationFilter;
 use App\Models\User;
 use App\Services\DataServicesService;
 use App\Services\NotificationService;
@@ -15,16 +17,19 @@ class ServicesController extends Controller
     public function __construct(
         private ServicesService $service,
         private DataServicesService $dataService,
-        private NotificationService $notificationService
+        private NotificationService $notificationService,
+        private DataServiceFilter $dataServiceFilter,
+        private NotificationFilter $notificationFilter
     ) {
     }
 
 
-    public function indexMessages(){
+    public function indexMessages()
+    {
         try {
             $data = $this->notificationService
-                ->where(DocStatus::COLUMN_NAME, DocStatus::ACTIVE)
-                ->where('doc_type','MS')
+                ->filters($this->notificationFilter)
+                ->where('doc_type', 'MS')
                 ->get();
             return response_success($data);
         } catch (\Throwable $th) {
@@ -103,7 +108,9 @@ class ServicesController extends Controller
     public function indexData()
     {
         try {
-            $data = $this->dataService->all();
+            $data = $this->dataService
+                ->filters($this->dataServiceFilter)
+                ->get();
             return response_success($data);
         } catch (\Throwable $th) {
             return response_error($th->getMessage());
@@ -166,7 +173,7 @@ class ServicesController extends Controller
             $receiver = User::findOrFail($request->get('receiver'));
             $payload = $request->get('payload');
 
-            sendEmail($receiver->email, 'Confirmation Service','emails.confirmation',[
+            sendEmail($receiver->email, 'Confirmation Service', 'emails.confirmation', [
                 'payload' => $payload
             ]);
 
@@ -194,7 +201,7 @@ class ServicesController extends Controller
             $receiver = User::findOrFail($request->get('receiver'));
             $payload = $request->get('payload');
 
-            sendEmail($receiver->email, 'New Message Contact','emails.messages',[
+            sendEmail($receiver->email, 'New Message Contact', 'emails.messages', [
                 'payload' => $payload
             ]);
 
@@ -202,6 +209,41 @@ class ServicesController extends Controller
             return response_success($data);
         } catch (\Throwable $th) {
             DB::rollBack();
+            return response_error($th->getMessage());
+        }
+    }
+
+    public function upload(Request $request)
+    {
+        try {
+            if (!$request->hasFile('upload')) {
+                throw new \ErrorException('No has enviado el archivo para guardar');
+            }
+            $file = $request->file('upload');
+            $folder = "admin/services/upload";
+            $path = storeFile($file, $folder);
+            return response_success($path);
+        } catch (\Throwable $th) {
+            return response_error($th->getMessage());
+        }
+    }
+
+    public function updateNotification(Request $request, $id)
+    {
+        try {
+            $data = $this->notificationService->update($id);
+            return response_success($data);
+        } catch (\Throwable $th) {
+            return response_error($th->getMessage());
+        }
+    }
+
+    public function updateServiceData(Request $request, $id)
+    {
+        try {
+            $data = $this->dataService->update($id);
+            return response_success($data);
+        } catch (\Throwable $th) {
             return response_error($th->getMessage());
         }
     }

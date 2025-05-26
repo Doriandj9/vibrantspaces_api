@@ -17,6 +17,7 @@ class DataServices extends BaseModel
         'stairs',
         'services_id',
         'user_id',
+        'doc_status'
         
     ];
 

@@ -2,10 +2,11 @@
 
 namespace App\Models;
 
+use App\Casts\PayloadCast;
+use App\Core\BaseModel;
 use App\Core\DocStatus;
-use Illuminate\Database\Eloquent\Model;
 
-class Notification extends Model
+class Notification extends BaseModel
 {
     protected $fillable = [
         'sender',
@@ -17,9 +18,13 @@ class Notification extends Model
         'updated_by',
         'data_service_id',
         'email',
+        'attachments',
         'doc_type'
     ];
 
 
+    protected $casts = [
+        'payload' => PayloadCast::class,
+    ];
 
 }
