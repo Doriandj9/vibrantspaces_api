@@ -60,6 +60,8 @@ return new class extends Migration {
 
     private function insertData()
     {
+        $date = now();
+
         $data = [
             [
                 'title' => 'LIMPIEZA RESIDENCIAL ESTÁNDAR',
@@ -272,6 +274,10 @@ return new class extends Migration {
             ],
         ];
 
+        foreach ($data as $key => $value) {
+            $data[$key]['created_at'] = $date;
+            $data[$key]['updated_at'] = $date;
+        }
         Services::insert($data);
     }
 };
