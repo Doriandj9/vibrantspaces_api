@@ -195,14 +195,17 @@ class ServicesController extends Controller
                 'type' => 'required',
                 'receiver' => 'required',
                 'email' => 'required',
-                'doc_type' => 'required'
+                'doc_type' => 'required',
+                'phone_number' => 'required'
             ]);
             $data = $this->notificationService->save();
             $receiver = User::findOrFail($request->get('receiver'));
             $payload = $request->get('payload');
 
             sendEmail($receiver->email, 'New Message Contact', 'emails.messages', [
-                'payload' => $payload
+                'payload' => $payload,
+                'email' => $request->get('email'),
+                'phone' => $request->get('phone_number'),
             ]);
 
             DB::commit();

@@ -71,7 +71,6 @@ class AuthController extends Controller
         try {
             $request->validate([
                 'email' => 'required',
-                'password' => 'required'
             ]);
             $data = $this->service->updateData($id);
             return response_success($data);

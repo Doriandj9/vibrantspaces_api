@@ -19,6 +19,7 @@ class Notification extends BaseModel
         'data_service_id',
         'email',
         'attachments',
+        'phone_number',
         'doc_type'
     ];
 

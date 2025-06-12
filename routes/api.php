@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AppSettingsController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ServicesController;
 use Illuminate\Http\Request;
@@ -34,6 +35,9 @@ Route::prefix('v1')->group(function () {
         Route::get('messages', [ServicesController::class,'indexMessages'])->middleware('auth:sanctum');
         Route::get('user/{tax_id}', [ServicesController::class,'showUserByTaxId']);
     });
+
+
+    Route::resource('app-settings', AppSettingsController::class);
 });
 
 // Route::get('mail', function (Request $request) {
