@@ -140,6 +140,11 @@ class ServicesController extends Controller
 
             $dataInsertServices['user_id'] = $user->id;
             $data = $this->dataService->save($dataInsertServices, false);
+            sendEmail($request->email, 'New service request', 'emails.messages', [
+                'payload' => 'You have received a new request, check your dashboard',
+                'email' => $request->get('email'),
+                'phone' => $request->get('contact_number'),
+            ]);
             DB::commit();
             return response_create($data);
         } catch (\Throwable $th) {

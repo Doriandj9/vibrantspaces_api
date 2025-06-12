@@ -10,7 +10,7 @@
             style="font-family:'Roboto Slab',Arial,Helvetica,sans-serif;font-size:42px;line-height:52px;font-weight:400;font-style:normal;color:#d7e057;text-decoration:none;letter-spacing:0px;">
 
             <div>
-                New Message
+                New Alert
             </div>
 
         </td>
@@ -52,7 +52,7 @@
                         <td>&nbsp;{{ $data['email']  }}</td>
                     </tr>
                     <tr>
-                        <td><strong>Contact telephone number:</strong></td>
+                        <td><strong>Contact:</strong></td>
                         <td>&nbsp;{{ $data['phone']  }}</td>
                     </tr>
                     <tr>
