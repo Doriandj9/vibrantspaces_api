@@ -13,7 +13,7 @@
     <td class="center-text" align="center" style="font-family:'Roboto Slab',Arial,Helvetica,sans-serif;font-size:42px;line-height:52px;font-weight:400;font-style:normal;color:#FFFFFF;text-decoration:none;letter-spacing:0px;">
 
         <div>
-            {{ str_replace('@name',$data['info']['full_name'],__('pleb.mail.Hello, @name')) }}
+            {{ str_replace('@name','Vibran Essences LLC',__('pleb.mail.Hello, @name')) }}
         </div>
 
     </td>

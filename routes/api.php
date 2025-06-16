@@ -14,6 +14,9 @@ Route::get('/user', function (Request $request) {
 Route::prefix('v1')->group(function () {
     Route::post('upload',[ServicesController::class,'upload']);
     Route::post('security/attempt',[AuthController::class,'authLogin']);
+    Route::post('security/forgot-password',[AuthController::class,'forwardPassword']);
+    Route::post('security/change-password',[AuthController::class,'changePassword']);
+    Route::get('security/verify-password',[AuthController::class,'verifyResetPass']);
     Route::post('security/logout',[AuthController::class,'logout'])
     ->middleware('auth:sanctum');
 
